@@ -10,16 +10,16 @@ systemctl --user restart xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-wlr  >/dev/null 2>&1 &
 
 # notify
-swaync -c ~/.config/mango/swaync/config.jsonc -s ~/.config/mango/swaync/style/style.scss >/dev/null 2>&1 &
+swaync -c ~/.config/swaync/config.jsonc -s ~/.config/swaync/style/style.scss >/dev/null 2>&1 &
 
 # night light
 wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
-swaybg -i ~/.config/mango/wallpaper/wallpaper.png >/dev/null 2>&1 &
+swaybg -i ~/.config/mango/wallpaper/czd.png >/dev/null 2>&1 &
 
 # top bar
-waybar -c ~/.config/mango/waybar/config.jsonc -s ~/.config/mango/waybar/style.css >/dev/null 2>&1 &
+waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
 
 
 # xwayland dpi scale
