@@ -35,7 +35,7 @@ compinit
 HISTFILE="$HOME/.zsh_history"
 
 # Quantidade de comandos mantidos na sessão atual.
-HISTSIZE=10000
+HISTSIZE=1000
 
 # Quantidade de comandos salvos no arquivo.
 SAVEHIST=10000
