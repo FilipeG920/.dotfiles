@@ -25,13 +25,13 @@ enable_audio_bell no
 shell_integration enabled
 
 # transparency
-background_opacity 0.94
+background_opacity 0.9
 
 # scroll
 scrollback_lines 10000
 
 
 # BEGIN_KITTY_THEME
-# Solarized Dark
+# Gruvbox Dark Hard
 include current-theme.conf
 # END_KITTY_THEME
