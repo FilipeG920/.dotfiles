@@ -1,0 +1,122 @@
+# ~/.config/zathura/zathurarc
+# Basic Zathura configuration with Everforest Dark theme
+
+# ------------------------------------------------------------
+# General behavior
+# ------------------------------------------------------------
+
+# Open documents fitting the page width
+set adjust-open "width"
+
+# Show pages continuously when scrolling
+set page-cache-size 20
+
+# Smooth scrolling
+set scroll-step 40
+
+# Number of pages to move when using page up/down
+set scroll-page-aware true
+
+# Start in recolor mode disabled by default
+# You can toggle it with Ctrl+r
+set recolor false
+
+# Enable incremental search
+set incremental-search true
+
+# Highlight search results
+set highlight-active-color "#a7c080"
+set highlight-color "#3a515d"
+
+# ------------------------------------------------------------
+# Interface
+# ------------------------------------------------------------
+
+# Hide statusbar and inputbar if you want a cleaner look
+# set statusbar-h-padding 0
+# set statusbar-v-padding 0
+
+# Padding around the document
+set page-padding 8
+
+# Window title
+set window-title-basename true
+
+# ------------------------------------------------------------
+# Fonts
+# ------------------------------------------------------------
+
+# Use any monospace font installed on your system
+set font "Fira Code Nerd Font 10"
+
+# ------------------------------------------------------------
+# Everforest Dark theme
+# ------------------------------------------------------------
+
+# Main colors
+set default-bg              "#2d353b"
+set default-fg              "#d3c6aa"
+
+set statusbar-bg            "#343f44"
+set statusbar-fg            "#d3c6aa"
+
+set inputbar-bg             "#343f44"
+set inputbar-fg             "#d3c6aa"
+
+set notification-bg         "#343f44"
+set notification-fg         "#d3c6aa"
+
+set notification-error-bg   "#543a48"
+set notification-error-fg   "#e67e80"
+
+set notification-warning-bg "#4b3b40"
+set notification-warning-fg "#dbbc7f"
+
+set completion-bg           "#343f44"
+set completion-fg           "#d3c6aa"
+
+set completion-highlight-bg "#3a515d"
+set completion-highlight-fg "#d3c6aa"
+
+set recolor-lightcolor      "#2d353b"
+set recolor-darkcolor       "#d3c6aa"
+
+set render-loading-bg       "#2d353b"
+set render-loading-fg       "#d3c6aa"
+
+set index-bg                "#2d353b"
+set index-fg                "#d3c6aa"
+
+set index-active-bg         "#3a515d"
+set index-active-fg         "#d3c6aa"
+
+# ------------------------------------------------------------
+# PDF recolor mode
+# ------------------------------------------------------------
+
+# When recolor is enabled, PDFs are recolored using these colors.
+# Toggle recolor mode with Ctrl+r.
+set recolor-lightcolor "#2d353b"
+set recolor-darkcolor  "#d3c6aa"
+
+# Keep images from being inverted too aggressively
+set recolor-keephue true
+
+# ------------------------------------------------------------
+# Useful keybindings
+# ------------------------------------------------------------
+
+# Reload document
+map r reload
+
+# Open document in fit-width mode
+map W adjust_window width
+
+# Open document in best-fit mode
+map B adjust_window best-fit
+
+# Toggle statusbar
+map <F8> toggle_statusbar
+
+# Toggle inputbar
+map <F9> toggle_inputbar
