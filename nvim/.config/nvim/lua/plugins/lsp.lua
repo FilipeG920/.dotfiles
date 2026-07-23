@@ -145,10 +145,7 @@ local servers = {
     root_markers = { '.git', '.obsidian', '.moxide.toml' },
   },
 
-  -- haskell
-  hls = {
-    filetypes = { 'haskell', 'lhaskell', 'cabal' },
-  },
+  slint_lsp = {},
 
   -- javascript
   quick_lint_js = {},

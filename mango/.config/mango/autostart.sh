@@ -16,7 +16,7 @@ swaync -c ~/.config/swaync/config.jsonc -s ~/.config/swaync/style/style.scss >/d
 wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
-swaybg -i ~/.config/mango/wallpaper/czd.png >/dev/null 2>&1 &
+swaybg -i ~/Imagens/wallpapers/paysage_troyon.jpg >/dev/null 2>&1 &
 
 # top bar
 waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &

@@ -6,7 +6,7 @@ local lint = require 'lint'
 lint.linters_by_ft = {
   markdown = { 'markdownlint-cli2' }, -- Make sure to install `markdownlint` via mason / npm
   python = { 'ruff' },
-  javascript = { 'quick-lint-js' },
+  javascript = { 'oxlint' },
   html = { 'markuplint' },
   -- css = { 'sonarlint-language-server' },
 }
