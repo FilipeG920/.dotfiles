@@ -17,6 +17,7 @@ require('conform').setup {
       javascript = true,
       html = true,
       css = true,
+      slint = true,
     }
     if enabled_filetypes[vim.bo[bufnr].filetype] then
       return { timeout_ms = 500 }

@@ -20,8 +20,9 @@ require 'plugins.lint'
 require 'plugins.debug'
 require 'plugins.editing_comment_support'
 require 'plugins.nvim-notify'
-require 'plugins.project'
+require 'plugins.nvim-lightbulb'
 require 'plugins.nvim-ts-autotag' -- Cool shit I think...
+require 'plugins.project'
 require 'plugins.obsidian'
 
 vim.g.live_server = {
