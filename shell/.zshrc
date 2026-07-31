@@ -324,3 +324,6 @@ if [[ "$TERM" == "xterm-kitty" ]] && command -v fastfetch >/dev/null 2>&1; then
   fastfetch
 fi
 eval "$(mise activate zsh)"
+
+# kimi-code
+export PATH="/home/Filipe/.kimi-code/bin:$PATH"
