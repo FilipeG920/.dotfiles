@@ -6,6 +6,7 @@ require 'config.diagnostics'
 require 'config.pack'
 
 require 'plugins.ui'
+-- require 'plugins.bufferline'
 require 'plugins.colorscheme'
 require 'plugins.mini'
 require 'plugins.dashboard-nvim'
