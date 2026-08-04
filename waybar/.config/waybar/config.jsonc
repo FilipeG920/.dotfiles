@@ -1,183 +1,80 @@
 // -*- mode: jsonc -*-
+// Waybar config for MangoWM — Glassmorphic / iris-adaptive
 {
-    "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 42, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 6,
+    // reload style without killing the bar: killall -SIGUSR2 waybar
+    "reload_style_on_change": true,
+
     "modules-left": [
-        "mango/workspaces",
-        "mango/layout",
-        "wlr/taskbar",
-        "mango/window",
+        "mango/workspaces"
     ],
     "modules-center": [
+        "clock"
     ],
     "modules-right": [
-        "tray",
-        "mango/language",
-        "mango/keymode",
-        "network",
         "cpu",
         "memory",
-        "temperature",
         "pulseaudio",
         "backlight",
         "battery",
-        "clock",
+        "custom/notification",
         "custom/power"
     ],
+
+    // ---------- LEFT ----------
+    // MangoWM has a fixed set of tags (1-9 by default, see your keybinds).
+    // hide-empty: false -> ALL tags are always shown.
+    // States: active = filled pill, empty = dimmed, urgent = red (see style.css).
     "mango/workspaces": {
         "format": "{icon}",
-        "hide-empty": true,
+        "hide-empty": false,
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "active": "",
+            "urgent": "",
+            "empty": "",
+            "default": ""
+        },
         "on-click": "activate",
         "on-click-right": "toggle",
-        "overview-label": "OVERVIEW"
-    },
-    "mango/keymode": {
-    	"format": "{}",
-    	// "format-default": " Default",
-        // "format-test": " Test",
-    },
-    "mango/window": {
-        "format": "{}",
-        "icon": true,
-        "on-click":"bash ~/.config/mango/scripts/screenshot.sh",
-        "on-click-right":"bash ~/tool/shotTranslate.sh shot",
-	    "icon": false,
-	    "icon-size": 20
-	    // "rewrite": {
-	    // 	"主目录": "🌎 $1",
-	    // 	"(.*) - zsh": "> [$1]"
-	    // },
-    },
-    "mango/layout": {
-        "format": "{}",
-        // "format-S": "Scroller",
-        // "format-T": "Tile",
-    },
-    "mango/language": {
-    "format": "{short}",
-    "format-en": "󰌌 US",
-    "format-ru": "󰌌 RU"
-    },
-    "dwl/window": {
-        "format": "[{layout}]{title}",
-        // "icon": true,
-        "on-click":"bash ~/.config/mango/scripts/screenshot.sh",
-        "on-click-right":"bash ~/tool/shotTranslate.sh shot",
-        // "max-length": 50
-    },
-    "ext/workspaces": {
-      "format": "{icon}",
-      "ignore-hidden": true,
-      // "active-only":true,
-      "on-click": "activate",
-      "on-click-right": "deactivate",
-      "on-scroll-up":"mmsg dispatch viewtoleft_have_client",
-      "on-scroll-down":"mmsg dispatch viewtoright_have_client",
-      "sort-by-id": true,
-      // "format-icons": {
-      //   "1": "",
-      //   "2": "",
-      //   "3": "",
-      //   "4": "",
-      //   "5": "",
-      //   "urgent": "",
-      //   "active": "",
-      //   "default": ""
-      // },
-    },
-    "wlr/taskbar": {
-      "format": "{icon}",
-      "icon-size": 20,
-      "all-outputs": false,
-      "tooltip-format": "{title}",
-      "markup": true,
-      "on-click": "activate",
-      "on-click-middle": "minimize",
-      "on-click-right": "close",
-      "ignore-list": ["Rofi", "wofi"]
-    },
-    "network": {
-      "interval": 2,
-      "format-wifi": "\uf1eb {essid} ({signalStrength}%)",
-      "format-ethernet": "󰈀 {ifname}",
-      "format-linked": "\uf059 No IP ({ifname})",
-      "format-disconnected": "\uf071 Disconnected",
-      "tooltip-format": "{ipaddr}/{cidr} via {gwaddr}",
-      "format-alt": "↓{bandwidthDownBytes} ↑{bandwidthUpBytes}"
+        "overview-label": "󰮔"
     },
 
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-"keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": {
-        "numlock": "N {icon}",
-        "capslock": "C {icon}"                                                                                                                                                       
-    },
-    "format-icons": {
-        "locked": "",
-        "unlocked": ""
-    }
-},
+    // ---------- CENTER ----------
     "clock": {
-      "format": " {:%H:%M}",
-      "format-alt": " {:L%A, %b %d}",
-      "tooltip-format": "{:%Y}",
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%A, %d %B %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
+
+    // ---------- RIGHT ----------
     "cpu": {
-      "interval": 2,
-      "format": " {load}%"
+        "interval": 2,
+        "format": "  {usage}%",
+        "tooltip": true
     },
     "memory": {
-        "format": " {}%"
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 90,
-        // "format-critical": "{temperatureF}°F {icon}",
-        "format": "{icon} {temperatureC}°C",
-        "tooltip": true,
-        "tooltip-format": "{temperatureF}°F",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["󰖔", "󰖨"],
-        "on-scroll-up": "bash ~/.config/mango/scripts/brightness.sh bup",
-        "on-scroll-down": "bash ~/.config/mango/scripts/brightness.sh bdown",
-        "on-click": "brightnessctl set 1%"
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
+        "interval": 2,
+        "format": "  {percentage}%",
+        "tooltip-format": "Used {used:0.1f}G / {total:0.1f}G"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰖁  Muted",
         "on-click": "pamixer -t",
         "on-scroll-up": "pamixer -i 2",
         "on-scroll-down": "pamixer -d 2",
@@ -192,31 +89,56 @@
             "default": ["", "", ""]
         }
     },
-    "custom/power": {
-        "format": "󰣇",
-        "tooltip": false,
-        "on-click": "wlogout -C ~/.config/wlogout/style.css -l  ~/.config/wlogout/layout  -b 6 --protocol layer-shell",
-        "on-click-right": "sleep 0.1s && swaync-client -t -sw",
-
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["󰖔", "󰖨"],
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}  {time}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo} ({power}W)",
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/battery_menu.xml",
+        "menu-actions": {
+            "performance": "powerprofilesctl set performance",
+            "balanced": "powerprofilesctl set balanced",
+            "power-saver": "powerprofilesctl set power-saver"
+        }
     },
     "custom/notification": {
-      "tooltip": false,
-      "format": "{icon}",
-      "format-icons": {
-        "notification": "<span foreground='red'><sup></sup></span>",
-        "none": "  ",
-        "dnd-notification": "<span foreground='red'><sup></sup></span>",
-        "dnd-none": "",
-        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-        "inhibited-none": "",
-        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-        "dnd-inhibited-none": ""
-      },
-      "return-type": "json",
-      "exec-if": "which swaync-client",
-      "exec": "swaync-client -swb",
-      "on-click": "sleep 0.1s && swaync-client -t -sw",
-      "on-click-right": "swaync-client -d -sw",
-      "escape": true
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1s && swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout -C ~/.config/wlogout/style.css -l ~/.config/wlogout/layout -b 6 --protocol layer-shell"
+    }
 }
