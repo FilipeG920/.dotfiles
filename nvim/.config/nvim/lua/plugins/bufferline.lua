@@ -5,7 +5,7 @@ local bufferline = require 'bufferline'
 bufferline.setup {
   options = {
     themable = true,
-    separator_style = 'slope',
+    separator_style = 'thick',
   },
 }
 
