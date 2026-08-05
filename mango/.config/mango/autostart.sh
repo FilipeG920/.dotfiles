@@ -16,6 +16,7 @@ swaync -c ~/.config/swaync/config.jsonc -s ~/.config/swaync/style/style.scss >/d
 wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
+# setwall.sh ~/Imagens/wallpapers/Dark/dark_green_fluid2.jpg
 swaybg -i ~/Imagens/wallpapers/paysage_troyon.jpg >/dev/null 2>&1 &
 
 # top bar
