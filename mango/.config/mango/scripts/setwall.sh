@@ -20,4 +20,4 @@ swaybg -i "$WALL" -m fill &
 killall -SIGUSR2 waybar
 
 # refresh swaync colors too, if you theme it with iris
-# swaync-client -rs
+swaync-client -rs
