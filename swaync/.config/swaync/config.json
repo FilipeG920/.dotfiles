@@ -1,9 +1,8 @@
 {
- 
     "$schema": "/etc/xdg/swaync/configSchema.json",
     "positionX": "right",
     "positionY": "top",
-	"layer": "overlay",
+    "layer": "overlay",
     "control-center-margin-top": 10,
     "control-center-margin-bottom": 10,
     "control-center-margin-right": 10,
@@ -20,32 +19,32 @@
     "notification-window-width": 440,
     "keyboard-shortcuts": true,
     "image-visibility": "when-available",
-    "transition-time": 200,
+    "transition-time": 250,
     "hide-on-clear": true,
     "hide-on-action": true,
     "script-fail-notify": true,
-	"scripts": {
-		"message-sound": {
-			"exec": "~/.config/swaync/sound/sound-message.sh",
-			"app-name":"QQ|Google-chrome"
-		},
-		"complete-sound": {
-			"exec": "~/.config/swaync/sound/sound-complete.sh",
-			"app-name":"alixby3|Motrix|com.xunlei.download|baidunetdisk"
-		},
-		"Low-sound": {
-			"exec": "~/.config/swaync/sound/sound-normal.sh",
-			"urgency": "Low"
-		  },
-		"Normal-sound": {
-		  "exec": "~/.config/swaync/sound/sound-normal.sh",
-		  "urgency": "Normal"
-		},
-		"Critical-sound": {
-			"exec": "~/.config/swaync/sound/sound-critical.sh",
-			"urgency": "Critical"
-		  }
-	},
+    "scripts": {
+        "message-sound": {
+            "exec": "~/.config/swaync/sound/sound-message.sh",
+            "app-name": "QQ|Google-chrome"
+        },
+        "complete-sound": {
+            "exec": "~/.config/swaync/sound/sound-complete.sh",
+            "app-name": "alixby3|Motrix|com.xunlei.download|baidunetdisk"
+        },
+        "Low-sound": {
+            "exec": "~/.config/swaync/sound/sound-normal.sh",
+            "urgency": "Low"
+        },
+        "Normal-sound": {
+            "exec": "~/.config/swaync/sound/sound-normal.sh",
+            "urgency": "Normal"
+        },
+        "Critical-sound": {
+            "exec": "~/.config/swaync/sound/sound-critical.sh",
+            "urgency": "Critical"
+        }
+    },
     "widgets": [
         "title",
         "dnd",
@@ -67,7 +66,7 @@
         },
         "mpris": {
             "image-size": 96,
-            "image-radius": 7
+            "image-radius": 16
         }
     }
 }

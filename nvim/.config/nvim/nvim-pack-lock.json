@@ -36,7 +36,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "flutter-tools.nvim": {
-      "rev": "7d1acfd139215e02d2784733af69a61aaebe06e8",
+      "rev": "0867b346e9a60753080168188c8f1ee6be40b767",
       "src": "https://github.com/nvim-flutter/flutter-tools.nvim"
     },
     "friendly-snippets": {
@@ -80,7 +80,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "8bf5c57bc82dd590932faa41bfde9fd6d40a9433",
+      "rev": "629bf6792187e11b4829411c1648f86f28df3963",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
@@ -97,7 +97,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim": {
-      "rev": "79e2049a0fdf7ec840f8463fe1d962c94493196b",
+      "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-dap": {
@@ -137,7 +137,7 @@
       "src": "https://github.com/rcarriga/nvim-notify"
     },
     "nvim-puppeteer": {
-      "rev": "43d7a5fc5a0854104a54fba3a6d3e912c287e86b",
+      "rev": "9f5ceef393cbbaa8f9e48e3fbe2973c963257ebf",
       "src": "https://github.com/chrisgrieser/nvim-puppeteer"
     },
     "nvim-tcss": {
@@ -145,7 +145,7 @@
       "src": "https://github.com/cachebag/nvim-tcss"
     },
     "nvim-treesitter": {
-      "rev": "7b6cc8949f9999c5ed91436cbe24aa5f99c42025",
+      "rev": "c9f9ed6c1892f629ea399f4ee7905f2686fa13f2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -171,11 +171,11 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "project.nvim": {
-      "rev": "42474f632bc4e26b9118a8a9863e23c1d9a8e139",
+      "rev": "db5c011205804f4ef5f0048cdbf6ebef5ce69b88",
       "src": "https://github.com/DrKJeff16/project.nvim"
     },
     "rustaceanvim": {
-      "rev": "5a3a4158857ee1f7ec839b6ddd87cc0083a19c5f",
+      "rev": "f4051fb4662c43a568ce809a37e47c0f4e3d7a31",
       "src": "https://github.com/mrcjkb/rustaceanvim",
       "version": "9.0.0 - 10.0.0"
     },
@@ -199,12 +199,16 @@
       "rev": "c2f5910074103705661e9651aa841e0d7eea9932",
       "src": "https://github.com/pmizio/typescript-tools.nvim"
     },
+    "vim-wakatime": {
+      "rev": "9f8a1d3b9c6f3a948988a0896b3227c1e1f74a58",
+      "src": "https://github.com/wakatime/vim-wakatime"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
     },
     "xeno.nvim": {
-      "rev": "4d41f04fa207e6516f5b8f545432ce7978529133",
+      "rev": "f0b5a9299c18d9a8e3cf915b7aea257520e6028e",
       "src": "https://github.com/kyzabuilds/xeno.nvim"
     }
   }

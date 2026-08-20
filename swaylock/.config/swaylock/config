@@ -1,35 +1,23 @@
-# swaylock-effects config — shadcn look, colors from iris
-# INSTALL: cp config ~/.config/swaylock/config
-# Colors live in the iris-generated include below; this file holds
-# layout/typography/effects only, so wallpaper switches never touch it.
+# ~/.config/swaylock/config
 
-include=~/.cache/iris/swaylock
-
-# lock screen wallpaper (static path — update manually, or see note below)
-image=~/Imagens/wallpapers/cat-blue-eye.png
+image=~/Imagens/wallpapers/nature_green_sunset.jpg
 scaling=fill
 
-# typography — matches the bar/rofi/swaync stack
 font=Oxanium
 font-size=22
 
-# clock
 clock
 timestr=%H:%M
 datestr=%A, %d %B
 
-# indicator geometry — larger, thin ring = cleaner shadcn look
+indicator
 indicator-radius=110
 indicator-thickness=6
 
-# behavior
 fade-in=0.2
 grace=2
 ignore-empty-password
 show-failed-attempts
 show-keyboard-layout
 
-# optional swaylock-effects extras (uncomment to taste):
-# effect-blur=7x5          # blur the wallpaper behind the indicator
-# effect-vignette=0.5:0.5  # darken edges slightly
-# indicator-idle-visible   # keep ring visible even when idle
+color=ff00ff

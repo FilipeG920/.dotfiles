@@ -1,5 +1,5 @@
 // -*- mode: jsonc -*-
-// Waybar config for MangoWM — Glassmorphic / iris-adaptive
+// Waybar config for MangoWM — Material Design 3 / iris-adaptive
 {
     "layer": "top",
     "position": "top",
@@ -22,6 +22,7 @@
         "memory",
         "pulseaudio",
         "backlight",
+        "network",
         "battery",
         "custom/notification",
         "custom/power"
@@ -94,6 +95,17 @@
         "format-icons": ["󰖔", "󰖨"],
         "on-scroll-up": "brightnessctl set +5%",
         "on-scroll-down": "brightnessctl set 5%-"
+    },
+    "network": {
+        "interface": "wl*",
+        "interval": 5,
+        "format-wifi": "{icon}  {signalStrength}%",
+        "format-disconnected": "󰤮  Offline",
+        "format-disabled": "󰤭  Wi-Fi off",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}% ({signaldBm} dBm)\n{ipaddr}",
+        "tooltip-format-disconnected": "Wi-Fi disconnected",
+        "tooltip-format-disabled": "Wi-Fi disabled"
     },
     "battery": {
         "states": {

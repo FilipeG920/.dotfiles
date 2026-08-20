@@ -1,18 +1,17 @@
 /* ==========================================================================
-   Waybar — shadcn/ui-inspired theme, adaptive via iris
+   Waybar — Material Design 3, adaptive via iris
    --------------------------------------------------------------------------
-   Design language: solid cards, 1px borders, muted text, small radius,
-   one accent color used sparingly. No translucency, no blur needed.
+   Design language: tonal surfaces, large rounded containers, expressive
+   active states, soft state layers, and restrained elevation.
+
+   Iris remains the single palette source. It writes colors.css; this file
+   only maps those generated colors into Material Design 3-style roles.
 
    iris (https://github.com/Harman1307/iris) writes the palette to
    ~/.cache/iris/colors-waybar.css on every run:
 
        iris ~/wallpapers/something.jpg
 
-   Token mapping (iris -> shadcn):
-     @bg      -> background            @dim    -> muted-foreground
-     @surface -> card / muted          @accent -> primary / ring
-     @fg      -> foreground            @red    -> destructive
    If "~" doesn't expand in your GTK build, symlink instead:
      ln -sf ~/.cache/iris/colors-waybar.css ~/.config/waybar/colors.css
      and change the import to:  @import "colors.css";
@@ -20,188 +19,219 @@
 
 @import "colors.css";
 
-/* ---- shadcn tokens ------------------------------------------------------- */
-@define-color background          @bg;
-@define-color foreground          @fg;
-@define-color card                @surface;
-@define-color muted-foreground    @dim;
-@define-color primary             @accent;
-@define-color destructive         @red;
-@define-color border              alpha(@fg, 0.12); /* shadcn border ~ 10% fg */
-@define-color hover               alpha(@fg, 0.08);
+/* ---- Material 3-inspired semantic roles, mapped from iris ---------------- */
+@define-color surface                 @bg;
+@define-color surface-container       @surface;
+@define-color on-surface              @fg;
+@define-color on-surface-variant      @dim;
+@define-color primary                 @accent;
+@define-color primary-container       alpha(@accent, 0.24);
+@define-color on-primary-container    @fg;
+@define-color error                   @red;
+@define-color error-container         alpha(@red, 0.20);
+@define-color outline                 alpha(@fg, 0.18);
+@define-color state-hover             alpha(@fg, 0.08);
+@define-color state-pressed           alpha(@fg, 0.12);
+@define-color elevation-shadow        alpha(@bg, 0.42);
 
 * {
   font-family:
     "Oxanium", "Maple Mono NF CN", "JetBrainsMono Nerd Font Propo", monospace;
   font-size: 13px;
-  font-weight: 500; /* medium, not bold — shadcn typography */
+  font-weight: 500;
   border: none;
   border-radius: 0;
   min-height: 0;
 }
 
-/* ---- bar: fully transparent, the cards float on it ----------------------- */
+/* ---- transparent shell; each region is an M3 surface container ----------- */
 window#waybar {
   background: transparent;
+  color: @on-surface;
 }
 
 window#waybar.hidden {
-  opacity: 0.2;
+  opacity: 0.25;
 }
 
-/* ---- three floating cards: left / center / right -------------------------- */
 .modules-left,
 .modules-center,
 .modules-right {
-  background: @card;
-  border: 1px solid @border;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px alpha(@bg, 0.6);
-  padding: 3px 6px;
+  background: @surface-container;
+  color: @on-surface;
+  border: 1px solid @outline;
+  border-radius: 18px;
+  box-shadow: 0 2px 6px @elevation-shadow;
+  padding: 4px 7px;
 }
 
-/* ---- LEFT: workspaces / tags — ghost buttons ------------------------------ */
+/* ---- LEFT: M3 segmented / filter-chip-like workspace group --------------- */
 #workspaces {
   padding: 0;
   margin: 0;
 }
 
 #workspaces button {
-  min-width: 26px;
-  padding: 2px 8px;
-  margin: 1px;
-  border-radius: 6px;
+  min-width: 28px;
+  padding: 3px 9px;
+  margin: 1px 2px;
+  border-radius: 14px;
   background: transparent;
-  color: @foreground;
-  border: none;
+  color: @on-surface;
   box-shadow: none;
   transition:
-    background 150ms ease,
-    color 150ms ease;
+    background 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 #workspaces button.empty {
-  color: @muted-foreground;
+  color: @on-surface-variant;
 }
 
 #workspaces button:hover {
-  background: @hover;
+  background: @state-hover;
 }
 
 #workspaces button.active,
 #workspaces button.overview {
-  background: @primary;
-  color: @background;
-  box-shadow: none;
+  background: @primary-container;
+  color: @on-primary-container;
+  box-shadow: inset 0 0 0 1px alpha(@primary, 0.2);
 }
 
 #workspaces button.urgent {
-  background: @destructive;
-  color: @background;
+  background: @error-container;
+  color: @error;
 }
 
 #workspaces button.current_output:not(.active) {
+  background: alpha(@primary, 0.1);
   box-shadow: inset 0 -2px 0 @primary;
 }
 
-/* ---- CENTER: clock — plain text, no chrome -------------------------------- */
+/* ---- CENTER: compact top-app-bar style clock ----------------------------- */
 #clock {
-  color: @foreground;
+  color: @on-surface;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 0 6px;
+  letter-spacing: 0.4px;
+  padding: 2px 9px;
+  border-radius: 14px;
 }
 
-/* ---- RIGHT: system modules — flat, separated by whitespace ----------------- */
+#clock:hover {
+  background: @state-hover;
+}
+
+/* ---- RIGHT: M3 icon/text buttons inside a shared surface ----------------- */
 #cpu,
 #memory,
 #pulseaudio,
 #backlight,
+#network,
 #battery,
 #custom-notification,
 #custom-power,
 #tray,
 #window {
   background: transparent;
-  color: @foreground;
-  padding: 2px 8px;
+  color: @on-surface;
+  padding: 3px 8px;
   margin: 1px;
-  border-radius: 6px;
-  transition: background 150ms ease;
+  border-radius: 14px;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
 }
 
 #cpu:hover,
 #memory:hover,
 #pulseaudio:hover,
 #backlight:hover,
+#network:hover,
 #battery:hover,
 #custom-notification:hover {
-  background: @hover;
+  background: @state-hover;
 }
 
-/* state colors — used like shadcn badges, sparingly */
+/* ---- Wi-Fi --------------------------------------------------------------- */
+#network.wifi {
+  color: @on-surface;
+}
+
+#network.disconnected,
+#network.disabled {
+  color: @on-surface-variant;
+}
+
+/* ---- state colors -------------------------------------------------------- */
 #pulseaudio.muted {
-  color: @muted-foreground;
+  color: @on-surface-variant;
 }
 
 #battery.charging,
 #battery.plugged {
   color: @green;
+  background: alpha(@green, 0.1);
 }
 
-@keyframes pulse-destructive {
+@keyframes pulse-error {
   to {
-    background: @destructive;
-    color: @background;
+    background: @error-container;
+    color: @error;
   }
 }
 
 #battery.critical:not(.charging) {
-  color: @destructive;
-  animation-name: pulse-destructive;
+  color: @error;
+  animation-name: pulse-error;
   animation-duration: 1s;
-  animation-timing-function: steps(12);
+  animation-timing-function: steps(10);
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
+/* ---- M3-style destructive icon button ----------------------------------- */
 #custom-power {
-  color: @destructive;
+  color: @error;
   font-size: 14px;
+  min-width: 24px;
 }
 
 #custom-power:hover {
-  background: @destructive;
-  color: @background;
+  background: @error-container;
+  color: @error;
 }
 
-/* ---- tooltips & menus — shadcn popover style -------------------------------- */
+/* ---- tooltips: elevated M3 surface --------------------------------------- */
 tooltip {
-  background-color: @card;
-  border: 1px solid @border;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px alpha(@bg, 0.6);
+  background: @surface-container;
+  border: 1px solid @outline;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px @elevation-shadow;
 }
 
 tooltip label {
-  color: @foreground;
-  padding: 4px 8px;
+  color: @on-surface;
+  padding: 6px 10px;
 }
 
+/* ---- menus: rounded M3 menu surface + state layers ----------------------- */
 menu {
-  background: @card;
-  border: 1px solid @border;
-  border-radius: 8px;
-  padding: 4px;
+  background: @surface-container;
+  border: 1px solid @outline;
+  border-radius: 14px;
+  padding: 5px;
+  box-shadow: 0 4px 12px @elevation-shadow;
 }
 
 menuitem {
-  color: @foreground;
-  border-radius: 6px;
-  padding: 4px 12px;
+  color: @on-surface;
+  border-radius: 10px;
+  padding: 6px 12px;
 }
 
 menuitem:hover {
-  color: @background;
-  background: @primary;
+  color: @on-surface;
+  background: @state-hover;
 }

@@ -332,3 +332,7 @@ eval "$(mise activate zsh)"
 
 # kimi-code
 export PATH="/home/Filipe/.kimi-code/bin:$PATH"
+
+# terminal-wakatime setup
+export PATH="$HOME/.wakatime:$PATH"
+eval "$(terminal-wakatime init)"

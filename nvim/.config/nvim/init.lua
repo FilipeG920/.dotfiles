@@ -37,6 +37,7 @@ require 'plugins.flutter-tools'
 require 'plugins.typescript-tools'
 require 'plugins.rust'
 require 'plugins.textual-css'
+require 'plugins.hackatime'
 
 -- require 'custom.plugins' --> Directory for plugins made by me
 

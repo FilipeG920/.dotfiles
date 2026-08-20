@@ -10,17 +10,21 @@ systemctl --user restart xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-wlr  >/dev/null 2>&1 &
 
 # notify
-swaync -c ~/.config/swaync/config.jsonc -s ~/.config/swaync/style/style.scss >/dev/null 2>&1 &
+# swaync -c ~/.config/swaync/config.jsonc -s ~/.config/swaync/style/style.scss >/dev/null 2>&1 &
 
 # night light
 wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
 # setwall.sh ~/Imagens/wallpapers/Dark/dark_green_fluid2.jpg
-swaybg -i ~/Imagens/wallpapers/paysage_troyon.jpg >/dev/null 2>&1 &
+# swaybg -i ~/Imagens/wallpapers/paysage_troyon.jpg >/dev/null 2>&1 &
+# ./scripts/setwall.sh ~/Imagens/wallpapers/Dark/flowery.png
 
 # top bar
-waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
+# waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
+
+# vibe panel
+vibepanel
 
 
 # xwayland dpi scale
@@ -46,7 +50,7 @@ nm-applet >/dev/null 2>&1 &
 /usr/lib/xfce-polkit/xfce-polkit >/dev/null 2>&1 &
 
 # inhibit by audio
-sway-audio-idle-inhibit >/dev/null 2>&1 &
+# sway-audio-idle-inhibit >/dev/null 2>&1 &
 
 # change light value and volume value by swayosd-client in keybind
-swayosd-server >/dev/null 2>&1 &
+# swayosd-server >/dev/null 2>&1 &

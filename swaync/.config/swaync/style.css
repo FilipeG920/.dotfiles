@@ -1,12 +1,18 @@
 /* ==========================================================================
-   swaync — shadcn/ui-inspired theme, adaptive via iris
+   SwayNC — Material Design 3, adaptive via Iris
    --------------------------------------------------------------------------
-   SETUP:
-     cp style.css ~/.config/swaync/style.css
+   IMPORTANT:
+   Iris remains the single palette source.
+
+   Keep your existing Iris symlink:
      ln -sf ~/.cache/iris/swaync-colors.css ~/.config/swaync/colors.css
 
-   Reload after iris runs:  swaync-client -rs
-   (setwall.sh already does this if you kept the swaync line uncommented)
+   Reload after Iris runs:
+     swaync-client -rs
+
+   This stylesheet intentionally uses Iris CSS variables DIRECTLY.
+   It avoids legacy GTK color aliases and avoids wrapping var(...) inside
+   GTK color functions.
    ========================================================================== */
 
 @import "./colors.css";
@@ -17,6 +23,13 @@
   font-weight: 500;
 }
 
+/* ==========================================================================
+   TRANSPARENT LAYER-SHELL WINDOWS
+
+   These stay transparent intentionally. The visible control-center and
+   notification surfaces below provide their own Iris backgrounds.
+   ========================================================================== */
+
 notificationwindow,
 blankwindow,
 .blank-window,
@@ -24,46 +37,50 @@ blankwindow,
   background: transparent;
 }
 
-/* ============ notifications (popup + control-center list) ================ */
+/* ==========================================================================
+   NOTIFICATIONS — M3 tonal cards
+   ========================================================================== */
 
 .notification-row {
-  background: none;
+  background: transparent;
   outline: none;
-  padding: 4px 2px;
+  padding: 5px 3px;
 }
 
 .notification {
   background: var(--surface);
   color: var(--fg);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 0;
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: background 150ms ease;
+  box-shadow: 0 3px 10px var(--shadow);
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
 }
 
 .notification.low {
-  border-left: 3px solid var(--border);
+  background: var(--bg);
 }
 
 .notification.normal {
-  border-left: 3px solid var(--accent);
+  background: var(--surface);
 }
 
 .notification.critical {
-  border: 1px solid var(--red);
-  border-left: 3px solid var(--red);
+  background: var(--surface);
+  border: 2px solid var(--red);
 }
 
 .notification-default-action {
-  padding: 10px 12px;
+  padding: 14px 16px;
   margin: 0;
-  box-shadow: none;
   background: transparent;
-  border: none;
   color: var(--fg);
-  border-radius: 10px;
-  transition: background 150ms ease;
+  border: none;
+  border-radius: 20px;
+  box-shadow: none;
+  transition: background 180ms ease;
 }
 
 .notification-default-action:hover {
@@ -80,19 +97,23 @@ blankwindow,
 }
 
 .notification-content .image {
-  -gtk-icon-size: 48px;
-  border-radius: 8px;
-  margin: 0 10px 0 0;
+  -gtk-icon-size: 52px;
+  border-radius: 16px;
+  margin: 0 12px 0 0;
 }
 
 .notification-content .app-icon {
-  -gtk-icon-size: 16px;
+  -gtk-icon-size: 18px;
   -gtk-icon-shadow: none;
   margin: 4px;
 }
 
+/* ==========================================================================
+   NOTIFICATION TYPOGRAPHY
+   ========================================================================== */
+
 .text-box label {
-  filter: none; /* undo GTK4's 50% opacity filter on labels */
+  filter: none;
 }
 
 .text-box .summary {
@@ -104,9 +125,10 @@ blankwindow,
 
 .text-box .time {
   font-size: 12px;
+  font-weight: 500;
   color: var(--dim);
   text-shadow: none;
-  margin-right: 28px;
+  margin-right: 30px;
 }
 
 .text-box .body {
@@ -116,19 +138,25 @@ blankwindow,
   text-shadow: none;
 }
 
-/* close button — quiet ghost circle, red on hover (shadcn destructive) */
+/* ==========================================================================
+   CLOSE BUTTON — M3 icon button
+   ========================================================================== */
+
 .close-button {
   background: transparent;
   color: var(--dim);
   text-shadow: none;
-  padding: 0;
   border: none;
   border-radius: 100%;
   box-shadow: none;
-  margin-top: 6px;
-  margin-right: 6px;
-  min-width: 22px;
-  min-height: 22px;
+  padding: 0;
+  margin-top: 8px;
+  margin-right: 8px;
+  min-width: 28px;
+  min-height: 28px;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
 }
 
 .close-button:hover {
@@ -136,43 +164,66 @@ blankwindow,
   color: var(--bg);
 }
 
-/* alternative action buttons below a notification */
+/* ==========================================================================
+   NOTIFICATION ACTIONS — M3 tonal buttons
+   ========================================================================== */
+
 .notification-alt-actions {
   background: transparent;
   border-top: 1px solid var(--border);
-  padding: 4px;
+  padding: 6px 8px 8px;
 }
 
 .notification-action > button {
   margin: 2px;
-  padding: 6px 10px;
-  background: transparent;
-  color: var(--fg);
+  padding: 7px 12px;
+  background: var(--bg);
+  color: var(--accent);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 18px;
+  box-shadow: none;
+  font-weight: 600;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
 }
 
 .notification-action > button:hover {
-  background: var(--hover);
+  background: var(--accent);
+  color: var(--bg);
 }
 
-/* inline reply */
+/* ==========================================================================
+   INLINE REPLY — M3 text field + filled button
+   ========================================================================== */
+
 .inline-reply-entry {
   background: var(--bg);
   color: var(--fg);
-  caret-color: var(--fg);
+  caret-color: var(--accent);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 8px;
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 4px 0;
+}
+
+.inline-reply-entry:focus {
+  border-color: var(--accent);
 }
 
 .inline-reply-button {
-  margin-left: 4px;
+  margin-left: 6px;
+  padding: 7px 14px;
   background: var(--accent);
   color: var(--bg);
   border: none;
-  border-radius: 6px;
-  padding: 4px 10px;
+  border-radius: 18px;
+  font-weight: 600;
+}
+
+.inline-reply-button:hover {
+  background: var(--fg);
+  color: var(--bg);
 }
 
 .inline-reply-button:disabled {
@@ -180,10 +231,13 @@ blankwindow,
   color: var(--dim);
 }
 
-/* grouped notifications */
+/* ==========================================================================
+   GROUPED NOTIFICATIONS
+   ========================================================================== */
+
 .notification-group-headers,
 .notification-group-buttons {
-  margin: 0 12px;
+  margin: 2px 14px;
   color: var(--fg);
 }
 
@@ -193,18 +247,20 @@ blankwindow,
 }
 
 .notification-group.collapsed.not-expanded {
-  opacity: 0.45;
+  opacity: 0.55;
 }
 
-/* ============ control center ============================================ */
+/* ==========================================================================
+   CONTROL CENTER — large M3 surface
+   ========================================================================== */
 
 .control-center {
   background: var(--surface);
   color: var(--fg);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px var(--shadow);
-  padding: 6px;
+  border-radius: 28px;
+  box-shadow: 0 8px 28px var(--shadow);
+  padding: 10px;
 }
 
 .control-center-list {
@@ -212,56 +268,90 @@ blankwindow,
 }
 
 .control-center-list .notification {
+  background: var(--bg);
   box-shadow: none;
 }
 
 .control-center-list-placeholder {
   opacity: 1;
   color: var(--dim);
-  padding: 24px;
+  padding: 32px 24px;
 }
 
-/* shared widget card */
+/* ==========================================================================
+   SHARED WIDGET CONTAINERS
+   ========================================================================== */
+
 .widget {
-  margin: 4px;
-  padding: 10px 12px;
+  margin: 5px;
+  padding: 12px 14px;
   background: var(--bg);
+  color: var(--fg);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 20px;
 }
 
-/* ---- title widget ------------------------------------------------------- */
+/* ==========================================================================
+   TITLE
+   ========================================================================== */
+
+.widget-title {
+  background: transparent;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .widget-title > label {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--fg);
 }
 
 .widget-title > button {
-  padding: 4px 10px;
+  padding: 7px 14px;
   background: transparent;
-  color: var(--dim);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  color: var(--red);
+  border: 1px solid var(--red);
+  border-radius: 18px;
   font-size: 12px;
+  font-weight: 600;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
 }
 
 .widget-title > button:hover {
   background: var(--red);
   color: var(--bg);
-  border-color: var(--red);
 }
 
-/* ---- dnd widget ---------------------------------------------------------- */
+/* ==========================================================================
+   DO NOT DISTURB — M3-style switch
+   ========================================================================== */
+
+.widget-dnd {
+  min-height: 40px;
+}
+
 .widget-dnd label {
   color: var(--fg);
   font-size: 13px;
+  font-weight: 600;
 }
 
 .widget-dnd switch {
-  background: var(--hover);
-  border: 1px solid var(--border);
+  background: var(--bg);
+  border: 2px solid var(--dim);
   border-radius: 100px;
+  min-width: 44px;
+  min-height: 24px;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.widget-dnd switch:hover {
+  background: var(--hover);
 }
 
 .widget-dnd switch:checked {
@@ -270,40 +360,47 @@ blankwindow,
 }
 
 .widget-dnd switch slider {
-  background: var(--fg);
-  border-radius: 100px;
+  background: var(--dim);
+  border-radius: 100%;
   min-width: 16px;
   min-height: 16px;
+  margin: 2px;
+  box-shadow: none;
 }
 
 .widget-dnd switch:checked slider {
   background: var(--bg);
 }
 
-/* ---- mpris widget --------------------------------------------------------- */
+/* ==========================================================================
+   MPRIS — prominent M3 media card
+   ========================================================================== */
+
 .widget-mpris {
   padding: 0;
 }
 
 .widget-mpris-player {
   margin: 0;
-  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
   box-shadow: none;
 }
 
 .widget-mpris-player .mpris-overlay {
-  padding: 12px;
+  padding: 16px;
   background-color: transparent;
 }
 
 .widget-mpris-album-art {
-  border-radius: 8px;
-  box-shadow: 0 1px 4px var(--shadow);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .widget-mpris-title {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--fg);
 }
 
@@ -316,8 +413,11 @@ blankwindow,
   background: transparent;
   color: var(--fg);
   border: none;
-  border-radius: 6px;
+  border-radius: 100%;
+  min-width: 32px;
+  min-height: 32px;
   padding: 4px 8px;
+  transition: background 180ms ease;
 }
 
 .widget-mpris-player button:hover {
@@ -328,7 +428,10 @@ blankwindow,
   color: var(--dim);
 }
 
-/* ---- scrollbar ------------------------------------------------------------ */
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+
 scrollbar {
   background: transparent;
 }
@@ -337,6 +440,7 @@ scrollbar slider {
   background: var(--dim);
   border-radius: 100px;
   min-width: 4px;
+  min-height: 24px;
 }
 
 scrollbar slider:hover {

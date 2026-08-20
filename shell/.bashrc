@@ -262,3 +262,7 @@ fi
 export PATH="/home/filipe/.local/bin:$PATH"
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
+
+# terminal-wakatime setup
+export PATH="$HOME/.wakatime:$PATH"
+eval "$(terminal-wakatime init)"
