@@ -1,7 +1,7 @@
-# font
-font_family Fira Code Nerd Font
-bold_font auto
-italic_font auto
+# fon
+# font_family Annotation Mono
+# bold_font auto
+# italic_font auto
 font_size 12.5
 
 # cursor
@@ -25,13 +25,18 @@ enable_audio_bell no
 shell_integration enabled
 
 # transparency
-background_opacity 0.9
+background_opacity 1
 
 # scroll
 scrollback_lines 10000
 
 
-# BEGIN_KITTY_THEME
-# Gruvbox Dark Hard
-include current-theme.conf
-# END_KITTY_THEME
+include themes/noctalia.conf
+
+
+# BEGIN_KITTY_FONTS
+font_family      family="FiraCode Nerd Font Mono"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS

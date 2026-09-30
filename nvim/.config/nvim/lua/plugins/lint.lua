@@ -8,6 +8,7 @@ lint.linters_by_ft = {
   python = { 'ruff' },
   javascript = { 'oxlint' },
   html = { 'markuplint' },
+  -- go = { 'revive' },
   -- css = { 'sonarlint-language-server' },
 }
 

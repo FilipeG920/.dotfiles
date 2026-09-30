@@ -18,6 +18,7 @@ require('conform').setup {
       html = true,
       css = true,
       slint = true,
+      go = true,
     }
     if enabled_filetypes[vim.bo[bufnr].filetype] then
       return { timeout_ms = 500 }
@@ -41,6 +42,7 @@ require('conform').setup {
     html = { 'prettierd', 'prettier', stop_after_first = true },
     css = { 'prettierd', 'prettier', stop_after_first = true },
     toml = { 'taplo' },
+    -- go = { 'gofumpt' },
   },
 }
 

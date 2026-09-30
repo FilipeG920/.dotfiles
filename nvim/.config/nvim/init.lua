@@ -6,7 +6,7 @@ require 'config.diagnostics'
 require 'config.pack'
 
 require 'plugins.ui'
-require 'plugins.bufferline'
+-- require 'plugins.bufferline'
 require 'plugins.colorscheme'
 require 'plugins.mini'
 require 'plugins.dashboard-nvim'
@@ -33,6 +33,7 @@ vim.g.live_server = {
 require 'plugins.live-server'
 
 require 'plugins.python'
+require 'plugins.golang'
 require 'plugins.flutter-tools'
 require 'plugins.typescript-tools'
 require 'plugins.rust'
@@ -43,3 +44,6 @@ require 'plugins.hackatime'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+local ok, matugen = pcall(require, 'matugen')
+if ok then matugen.setup() end

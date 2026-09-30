@@ -13,7 +13,7 @@ systemctl --user restart xdg-desktop-portal &
 # swaync -c ~/.config/swaync/config.jsonc -s ~/.config/swaync/style/style.scss >/dev/null 2>&1 &
 
 # night light
-wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
+# wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 
 # wallpaper
 # setwall.sh ~/Imagens/wallpapers/Dark/dark_green_fluid2.jpg
@@ -24,8 +24,10 @@ wlsunset -T 3501 -t 3500 >/dev/null 2>&1 &
 # waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
 
 # vibe panel
-vibepanel
+# vibepanel
 
+# noctalia
+noctalia
 
 # xwayland dpi scale
 echo "Xft.dpi: 140" | xrdb -merge #dpi缩放
