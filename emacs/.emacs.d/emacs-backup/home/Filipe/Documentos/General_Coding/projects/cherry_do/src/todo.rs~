@@ -1,0 +1,44 @@
+type TodoId = u64;
+
+#[derive(Debug)]
+enum TodoStatus {
+    Completed,
+    Ongoing,
+}
+
+// TODO:
+// struct Schedule {}
+
+#[derive(Debug)]
+pub struct Todo {
+    id: TodoId,
+    title: String,
+    description: String,
+    status: TodoStatus,
+    // started: datetime,
+    // completed: datetime,
+}
+
+impl Todo {
+
+    fn new(&mut self, title: String, description: String) -> &mut Todo {
+        let task: &mut Todo =self;
+        task.title = title;
+        task.description = description;
+        task.status = TodoStatus::Ongoing;
+        task
+    }
+
+    fn check_todo(&mut self) {
+        self.status = TodoStatus::Completed
+    }
+
+    fn rename(&mut self, new_title: String) {
+        self.title = new_title;
+    }
+}
+
+pub struct TodoList {
+    tasks: Vec<Todo>,
+    next_id: TodoId,
+}

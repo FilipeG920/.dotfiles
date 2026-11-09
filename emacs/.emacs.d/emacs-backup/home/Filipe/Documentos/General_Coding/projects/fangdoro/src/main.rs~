@@ -1,0 +1,10 @@
+use fangdoro::domain::{user_input_parse, PomodoroPlan};
+
+fn main() {
+    println!("Hello, world!");
+    println!("Creating a pomodoro plan!");
+
+    // let test_plan = PomodoroPlan::new(5, 5, 5, 2, 2);
+    // test_plan.plan();
+    user_input_parse("2:30");
+}

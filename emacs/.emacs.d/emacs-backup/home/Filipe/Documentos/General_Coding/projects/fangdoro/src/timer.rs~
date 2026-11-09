@@ -1,0 +1,38 @@
+use std::time::{Duration, Instant};
+
+use fangdoro::domain::{PomodoroPlan, TaskId};
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TimerKind {
+    Focus,
+    Break,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum TimerStatus {
+    Idle,
+    Running { ends_at: Instant },
+    Paused { remaining: Duration },
+    Finished,
+}
+
+#[derive(Debug, Clone)]
+pub struct Timer {
+    pub kind: TimerKind,
+    pub planned: Duration,
+    pub status: TimerStatus,
+}
+
+#[derive(Debug, Clone)]
+pub struct PomodoroSession {
+    pub task_id: TaskId,
+    pub plan: PomodoroPlan,
+    pub completed_slices: u8,
+    pub timer: Timer,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TimerEvent {
+    NoChange,
+    Finished(TimerKind),
+}

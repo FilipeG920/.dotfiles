@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       1c11c965-e348-4b16-834d-c2c832cb33c3
+:END:
+#+title: Envrc Project Setup
+
+* Introduction
+Setting up Envrc for a certain project depends on what tech stack we might be using and sometimes this isn't even needed.
+For example, Envrc is not needed for Go or Rust projects since their Projects managers can already handle the
+variables and dependencies needed for a certain projects.
+
+On the other side, Python and Typescript projects can get some utility from Envrc since their package manager can install dependencies globally and certainly introduce certain system insecurities and create bloat in general.
+
+For the moment I find the usefulness of envrc to be existent only for Emacs, I don't know if it's needed for other text editors, but it's something that I'll test to see if I like it.
+
+In the next sections I'll put step-by-step guides for setting up envrc for python and typescript projects.
+
+** Setting up envrc for Python and Typescript projects
+*** Python
+
+*** Typescript

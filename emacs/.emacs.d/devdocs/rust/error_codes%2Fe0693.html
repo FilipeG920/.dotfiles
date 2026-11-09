@@ -1,0 +1,17 @@
+<h1 id="error-code-e0693">Error code E0693</h1> <h4 id="note-this-error-code-is-no-longer-emitted-by-the-compiler">Note: this error code is no longer emitted by the compiler.</h4> <p>This error code was replaced by <code>E0539</code>.</p> <p><code>align</code> representation hint was incorrectly declared.</p> <p>Erroneous code examples:</p> <pre class="playground" data-language="rust">#![allow(unused)]
+fn main() {
+#[repr(align=8)] // error!
+struct Align8(i8);
+
+#[repr(align="8")] // error!
+struct Align8(i8);
+}</pre> <p>This is a syntax error at the level of attribute declarations. The proper syntax for <code>align</code> representation hint is the following:</p> <pre class="playground" data-language="rust">#![allow(unused)]
+fn main() {
+#[repr(align(8))] // ok!
+struct Align8(i8);
+}</pre><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2010 The Rust Project Developers<br>Licensed under the Apache License, Version 2.0 or the MIT license, at your option.<br>
+    <a href="https://doc.rust-lang.org/error_codes/E0693.html" class="_attribution-link">https://doc.rust-lang.org/error_codes/E0693.html</a>
+  </p>
+</div>

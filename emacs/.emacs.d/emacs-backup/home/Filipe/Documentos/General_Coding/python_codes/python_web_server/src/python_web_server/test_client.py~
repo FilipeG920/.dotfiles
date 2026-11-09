@@ -1,0 +1,14 @@
+import socket
+
+
+def sendMsg(s: socket.socket, msg: str):
+    s.send(msg)
+    pass
+
+
+def create_client():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    port = 6769
+
+    s.connect(("arch-genesis", port))

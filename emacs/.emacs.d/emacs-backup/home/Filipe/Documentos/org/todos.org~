@@ -1,0 +1,86 @@
+* General Tasks
+** DONE [#A] Read the 3 month report of SANTIA and decide what to do next
+CLOSED: [2026-10-05 seg 15:28]
+- State "DONE"       from "STARTED"    [2026-10-05 seg 15:28]
+- State "STARTED"    from "TODO"       [2026-10-05 seg 15:08]
+:Created: <2026-10-04 dom 23:33>
+
+Details about this should be put into: [[id:0a6f9f74-6eaa-4560-9f6d-32e592a748bd][[SANTIA] - Sprint07]]
+** DONE [#A] Organize Study topic for civil service exam
+CLOSED: [2026-10-05 seg 16:16]
+- State "DONE"       from "STARTED"    [2026-10-05 seg 16:16]
+- State "STARTED"    from "WAITING"    [2026-10-05 seg 16:11]
+:Created: <2026-10-05 seg 00:04>
+
+See: [[id:09e5d535-cdbf-4273-bdee-49a7bd6a925a][IFPI's Civil Service Exam study topics (Portugueses)]]
+
+** STARTED [#B] Plan the PET SAÚDE LEISHMANIOSE for month of october
+- State "STARTED"    from "PLANNING"   [2026-10-07 qua 18:02] \\
+  A reunion will start soon and I'll write everything about it on a file and then continue planning from there.
+:Created: <2026-10-05 seg 15:10>
+
+There should be things like:
+- Understand better about this month's task
+- Research how to automate it using python
+- Try to not use AI (lol)
+
+-> [[id:1f4b667d-2d72-4d4e-bd29-79ce5c841800][PET SAUDE LEISHMANIOSE - October]]
+  
+** PLANNING [#A] [SANTIA] Separate Admin screens from Staff screens - Sprint07
+:Created: <2026-10-05 seg 15:15>
+
+More details should go to:[[id:74e20895-ce3b-4653-88ba-75e0a95da0d7][[SANTIA] Separate Admin screens from Staff screens - Sprint07]]
+** TODO [#B] [SANTIA] Better filtering system for the professional user - Sprint07
+:Created: <2026-10-05 seg 15:17>
+
+More details are in: [Link of note for this task]
+** TODO [#B] [SANTIA] Improve notification system - Sprint07
+:Created: <2026-10-05 seg 15:19>
+
+More details should go to: [Link of note]
+** TODO [#C] [SANTIA] Improve overall application UI - Sprint07
+:Created: <2026-10-05 seg 15:21>
+
+More details are in: [Link of note]
+** TODO [#C] [SANTIA] Analyze how the recruitment phase should be improved - SPRINT07
+- State "TODO"       from "WAITING"    [2026-10-05 seg 15:24]
+:Created: <2026-10-05 seg 15:23>
+
+Task info are in: [Link of note]
+
+** STARTED [#C] [SANTIA] Plan how the Staff user should manage a partner's recruitees and its contracts - Sprint07
+- State "STARTED"    from "PLANNING"   [2026-10-09 sex 22:36]
+:Created: <2026-10-05 seg 15:25>
+
+More details in: [[id:943d2bb7-fb78-47a0-98c6-9ad88ef5bacb][[SANTIA] Contract Management planning]]
+
+** DONE [#B] Study for Entrepreneurship and innovation
+CLOSED: [2026-10-07 qua 18:01]
+- State "DONE"       from "STARTED"    [2026-10-07 qua 18:01]
+- State "STARTED"    from "PLANNING"   [2026-10-06 ter 22:25] \\
+  I'll just write on a temporary/disposable file.
+:Created: <2026-10-05 seg 15:31>
+
+** DONE [#B] Study for computer network exam
+CLOSED: [2026-10-09 sex 21:23]
+
+- State "DONE"       from "STARTED"    [2026-10-09 sex 21:23]
+- State "STARTED"    from "PLANNING"   [2026-10-08 qui 15:25] \\
+  I'll put notes in a temporary file that maybe can evolve
+  into full blown different types of annotations that cover
+  this vast subject.
+Use homework that teacher has given to study.
+:Created: <2026-10-07 qua 18:36>
+
+** STARTED [#B] Finish weather app made in Golang
+- State "STARTED"    from "PLANNING"   [2026-10-07 qua 18:40]
+:Created: <2026-10-07 qua 18:39>
+
+** PLANNING [#B] [SANTIA] Status report feature (Contract, Finance, Professional) - SPRINT07
+:Created: <2026-10-08 qui 22:05>
+
+More details in: [[id:06b46806-f5fd-457d-bf84-04c41de16013][[SANTIA] Status report feature - SPRINT07]]
+** PLANNING [#B] [PROJECT] Create pomodoro app (Fang Doro)
+:Created: <2026-10-12 seg 01:27>
+
+> More info in: [[id:22c34205-b381-456d-94d7-269b338f2b96][Fang Doro Project Document]]

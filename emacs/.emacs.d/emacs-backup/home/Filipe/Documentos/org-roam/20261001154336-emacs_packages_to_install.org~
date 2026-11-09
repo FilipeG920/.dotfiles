@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       31b3cb5e-7e52-4419-8fae-14af6c56e3b8
+:END:
+#+title: Emacs packages to install
+
+* A list of good things to install and try out myself
+
+-prism.el
+-helpful.el
+-ghosttel
+-devdocs.el
+-activities.el
+-Meow
+-(maybe) Desktop (Built-in)
+-For layout and switching(maybe):
+ -winner
+ -windmove

@@ -1,0 +1,101 @@
+package main
+
+import (
+	"bufio"
+	"flag"
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"net/url"
+	"os"
+)
+
+func http_test(city_name string, country_code string, limit int, api_key string) {
+	var limit_str string
+	if limit == 1 {
+		limit_str = "1"
+	}
+	query_v := url.Values{}
+	query_v.Set("city_name", city_name)
+	query_v.Set("country_code", country_code)
+	query_v.Set("limit", limit_str)
+	query_v.Set("api_key", api_key)
+	encoded_query := query_v.Encode()
+
+	weather_url := fmt.Sprintf("http://api.openweathermap.org/geo/1.0/direct?q=%s", encoded_query)
+	resp, err := http.Get(weather_url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	body, err := io.ReadAll(resp.Body)
+	if resp.StatusCode > 299 {
+		log.Fatalf("Response failed with status code: %d and\nbody %s\n", resp.StatusCode, body)
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	fmt.Printf("%s", body)
+}
+
+func get_data() (string, string, int, string) {
+	fmt.Println("API info")
+	var city_name, country_code, api_key string
+	var limit int
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "reading standard input:", err)
+	}
+
+	return city_name, country_code, limit, api_key
+}
+
+func concatenate(s1 string, s2 string) (string, string) {
+	s3 := s1 + " " + s2
+	s4 := fmt.Sprint("test: ", s1, " ", s2, "!", "\n")
+	return s3, s4
+}
+
+func cli() (*string, *string, *string, *string, []string) {
+	cityNamePtr := flag.String("CityName", "London", "City where to get the weather")
+	country_code := flag.String("CountryCode", "", "Code of the city")
+	limit := flag.String("Limit", "1", "Limit of requests done and cities fetched")
+	set_api_key := flag.String("ApiKey", "", "API key for open weather")
+
+	flag.Parse()
+	args := flag.Args()
+
+	return cityNamePtr, country_code, limit, set_api_key, args
+}
+
+func main() {
+	// city_name, country_code, limit, api_key := get_data()
+	city_name, country_code, limit, api_key, args := cli()
+	fmt.Printf("City Name: %s\n", *city_name)
+	if *country_code == "" {
+		fmt.Println("No Country code provided")
+	} else {
+		fmt.Printf("Country Code: %s\n", *country_code)
+	}
+	fmt.Printf("Limit: %s\n", *limit)
+	if *api_key == "" {
+		fmt.Println("No API key provided")
+	} else {
+		fmt.Printf("API Key: %s\n", *api_key)
+	}
+
+	if len(args) > 0 {
+		fmt.Printf("Additional arguments provided: %v\n", args)
+	}
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: %s [flags]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "\t--CityName string\tCity where to get weather info (default: London)\n")
+		fmt.Fprintf(os.Stderr, "\t--CountryCode string\tCountry code of the city (default: empty)\n")
+		fmt.Fprintf(os.Stderr, "\t--Limit string\tLimit of request for cities with the same name (default: 1)\n")
+		fmt.Fprintf(os.Stderr, "\t--ApiKey string\tAPI key for open weather (default: empty)\n")
+	}
+}

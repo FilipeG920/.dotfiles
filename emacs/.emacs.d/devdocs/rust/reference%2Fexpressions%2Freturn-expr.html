@@ -1,0 +1,22 @@
+ <h1 id="return-expressions">
+<code id="">return</code> expressions</h1>  <div class="grammar-container">
+<p><strong><sup>Syntax</sup></strong>
+<br>
+<span class="grammar-text grammar-production" id="grammar-ReturnExpression"><a href="return-expr#railroad-ReturnExpression">ReturnExpression</a></span> → <code class="grammar-literal">return</code> <span class="grammar-text"><a href="../expressions#grammar-Expression">Expression</a></span><sup>?</sup></p>
+
+<details class="grammar-railroad grammar-hidden"><summary>Syntax diagram</summary> <div style="width: 296px; height: auto; max-width: 100%; max-height: 100%" class="railroad-production" id="railroad-ReturnExpression">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="railroad" viewbox="0 0 296 87"> <rect width="100%" height="100%" class="railroad_canvas"></rect> <g class="verticalgrid"> <a xlink:href="return-expr#grammar-ReturnExpression" class="link"> <text class="comment" x="71" y="25"> ReturnExpression</text> </a> <g class="sequence"> <path d=" M 10 66 a 5 5 0 0 1 5 -5 a 5 5 0 0 1 5 5 a 5 5 0 0 1 -5 5 a 5 5 0 0 1 -5 -5 m 10 0 h 5"></path> <g class="sequence"> <g class="terminal"> <rect x="35" y="55" height="22" width="68" rx="10" ry="10"></rect> <text x="69" y="71"> return</text> </g> <g class="optional"> <path d=" M 113 66 h 24 m -24 0 a 12 12 0 0 0 12 -12 v 0 a 12 12 0 0 1 12 -12 h 100 m -47 0 l -5 -5 m 0 10 l 5 -5 m 47 0 a 12 12 0 0 1 12 12 v 0 a 12 12 0 0 0 12 12 h -24"></path> <a xlink:href="../expressions#railroad-Expression" class="link"> <g class="nonterminal"> <rect x="137" y="55" height="22" width="100"></rect> <text x="187" y="71"> Expression</text> </g> </a> </g> <path d=" M 103 66 h 10"></path> </g> <path d=" M 271 66 h 5 a 5 5 0 0 1 5 -5 a 5 5 0 0 1 5 5 a 5 5 0 0 1 -5 5 a 5 5 0 0 1 -5 -5"></path> <path d=" M 25 66 h 10"></path> <path d=" M 261 66 h 10"></path> </g> </g> </svg> </div> </details>
+</div>   <p>Return expressions are denoted with the keyword <code>return</code>.</p>  <p>Evaluating a <code>return</code> expression moves its argument into the designated output location for the current function call, destroys the current function activation frame, and transfers control to the caller frame.</p>  <p>A <code>return</code> expression is <a href="../divergence#r-divergence">diverging</a> and has a type of <a href="../types/never#r-type.never"><code>!</code></a>.</p> <p>An example of a <code>return</code> expression:</p> <pre class="playground" data-language="rust">#![allow(unused)]
+fn main() {
+fn max(a: i32, b: i32) -&gt; i32 {
+    if a &gt; b {
+        return a;
+    }
+    return b;
+}
+}</pre><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2010 The Rust Project Developers<br>Licensed under the Apache License, Version 2.0 or the MIT license, at your option.<br>
+    <a href="https://doc.rust-lang.org/reference/expressions/return-expr.html" class="_attribution-link">https://doc.rust-lang.org/reference/expressions/return-expr.html</a>
+  </p>
+</div>

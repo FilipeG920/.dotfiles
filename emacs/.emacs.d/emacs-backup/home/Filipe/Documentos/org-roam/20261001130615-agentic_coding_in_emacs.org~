@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       8142a95d-3183-4233-86b3-0d0df4acc729
+:END:
+#+title: Agentic Coding in Emacs
+
+For agentic coding in Emacs, [[https://github.com/xenodium/agent-shell][agent-shell]] is used as the bridge.
