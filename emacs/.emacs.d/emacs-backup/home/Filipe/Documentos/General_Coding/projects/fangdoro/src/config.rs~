@@ -1,0 +1,3 @@
+use std::path::Path;
+
+pub fn load_tasks(path: &Path) -> Result<Vec<>>

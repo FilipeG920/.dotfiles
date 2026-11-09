@@ -1,0 +1,26 @@
+;;; -*- lexical-binding: t -*-
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  )
+
+(setq dashboard-banner-logo-title "Nothing to lose, because nothing is mine.")
+;;(setq dashboard-startup-banner /home/Filipe/.emacs.d/banners/black_hole.txt)
+
+(setq dashboard-center-content t)
+(setq dashboard-vertically-center-content t)
+(setq dashboard-items '((recents   . 5)
+                        (bookmarks . 5)
+                        (projects  . 5)
+                        (agenda    . 5)
+                        (registers . 5)))
+
+(setq dashboard-icon-type 'all-the-icons)
+(setq dashboard-set-heading-icons t)
+;;(setq dashboard-set-file-icons t) -> Try this later
+;;(add-to-list 'dashboard-items '(agenda) t)
+
+;; This makes dashboard pick all agenda items without a time filter
+;; TODO in the future: Better understand org-agenda time filters
+(setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)

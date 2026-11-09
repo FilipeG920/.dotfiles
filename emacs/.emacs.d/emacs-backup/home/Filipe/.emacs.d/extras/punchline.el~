@@ -1,0 +1,14 @@
+;;; -*- lexical-binding: t -*-
+
+(use-package punch-line
+  ;; :ensure nil
+  :vc (:url "https://github.com/konrad1977/punch-line.git"
+	    :rev :newest)
+  :hook ((after-init . punch-line-mode)        ;; Load punch-line
+         (after-init . punch-weather-update)   ;; Load weather
+         (after-init . punch-load-tasks))      ;; Load saved current tasks
+  :config
+  (setopt
+   punch-line-left-separator "  "
+   punch-line-right-separator "  "
+   ))             ;; Max length of artist and song

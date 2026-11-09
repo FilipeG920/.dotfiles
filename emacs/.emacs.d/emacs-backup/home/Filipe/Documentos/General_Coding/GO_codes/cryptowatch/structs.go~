@@ -1,0 +1,35 @@
+package main
+
+// Represents user's CLI choices
+type AppConfig struct {
+	Top      int    // How many coins to fetch
+	IDs      string // IDs of coins
+	Currency string // Convert the coins to a certain type
+	Save     bool   // Whether append or not to a CSv
+	FilePath string // Where to save
+	Help     bool   // Show usage instruction or not
+}
+
+// Used to build the actual API request
+// Separated from AppConfig which is used only in the terminal, that is, has a different responsibility
+type QueryOptions struct {
+	VsCurrency string
+	IDs        []string
+	Top        int
+	Order      string
+	Page       int
+}
+
+// Represents one type of coin from the API
+type Coin struct {
+	ID                    string
+	Symbol                string
+	Name                  string
+	MarketCapRank         int
+	CurrentPrice          float64
+	MarketCap             int64
+	PriceChangePercentage float64
+	LastUpdated           string
+}
+
+// Op

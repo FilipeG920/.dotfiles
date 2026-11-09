@@ -1,0 +1,12 @@
+def wordshortener(num: str):
+    words: list[str] = []
+    shortenedwords: list[str] = []
+
+    for n in num:
+        word = input("Word: ")
+        words.append(word)
+
+    for word in words:
+        if len(word) >= 10:
+            count = len(word) + 2
+            shortenedwords.append()

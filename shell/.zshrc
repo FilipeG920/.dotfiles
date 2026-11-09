@@ -86,34 +86,6 @@ setopt INTERACTIVE_COMMENTS
 # Desativa beep chato do terminal.
 setopt NO_BEEP
 
-# ------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------
-# Remove entradas duplicadas automaticamente.
-typeset -U path PATH
-
-# Caminhos pessoais e ferramentas instaladas manualmente.
-# No Arch, programas instalados via pacman normalmente já ficam em /usr/bin.
-path=(
-  "$HOME/.local/bin"
-  "$HOME/bin"
-  "$HOME/develop/flutter/bin"
-  "$HOME/.ghcup/bin"
-  "$HOME/.local/share/gem/ruby/3.4.0/bin"
-  $path
-)
-
-# Go instalado manualmente em /usr/local/go.
-# Se você instalou Go via pacman, não precisa disso.
-# [[ -d /usr/local/go/bin ]] && path=("/usr/local/go/bin" $path)
-
-# Neovim instalado manualmente em /opt/nvim.
-# Se você instalou via pacman, ele já estará em /usr/bin/nvim.
-# [[ -d /opt/nvim/bin ]] && path=("/opt/nvim/bin" $path)
-
-
-export PATH="$HOME/.cargo/bin:/usr/lib/rustup/bin:$PATH"
-export PATH
 
 # ------------------------------------------------------------
 # Variáveis de ambiente
@@ -336,3 +308,6 @@ export PATH="/home/Filipe/.kimi-code/bin:$PATH"
 # terminal-wakatime setup
 export PATH="$HOME/.wakatime:$PATH"
 eval "$(terminal-wakatime init)"
+
+# direnv setup
+eval "$(direnv hook zsh)"

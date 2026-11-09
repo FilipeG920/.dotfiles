@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       22c34205-b381-456d-94d7-269b338f2b96
+:END:
+#+title: Fang Doro Project Document
+
+* Description:
+
+Fang Doro is a pomodoro application that synchronizes with org mode todo features for another way to visualize the current to-do tasks with additional features, such as zen mode, where distraction-prone applications are blocked for the duration of a certain tasks (like blocking youtube, wikipedia).
+
+It'll also have a GUI made in slint that synchronizes its colors with the desktop shell.
+It's a simple timer for different tasks from org-todo and a blocker included.
+
+* Tech Stack:
+
+- Rust (Backend Logic) -> I want to learn Rust and I think this project is a good way for this since it's a program that I'm interested on and that I'll use probably on a daily basis.
+- Slint (UI)
+
+* Features:
+
+** Early features:
+- An user-defined timer (They can increase in intervals of 5 minutes or type in an arbitrary value)
+- Breaks between focus time that are also user-defined
+- Synchronizes with an user defined org file that contains TODO items
+- Can define amount of slices for each task
+- Timers can be defined separately for each task (e.g.: Task 1 has 25 minutes for focus while Task 2 has 40 minutes)
+
+** Important features after initial implementation:
+- Detect when a TODO item has a schedule, deadline, etc. and automatically add it to the UI
+- Being able to select applications and websites that need to be blocked when a certain task's timer is started
+- Block computer entirely if an IRL task needs to be done (ADHD much? /jk)
+- Add autostart option for certain task
+
+* Data structures:
+
+** Org TODO item parser data type:
+- Reads line with TODO header (Needs to be able to know all status of a TODO item)
+- Checks a TODO item's priority
+- Reads its title
+- Reads keywords for Creation Date, Schedule, Deadline
+
+** Timer data type:
+- Needs to have an autoincrement option that can be user-defined
+- User can define an arbitrary value for the timer
+- Two 2 types of timer: Focus timers and Break timers (Both have the same features mentioned above)
+- Play a sound and notify when a timer ends
+
+** Undertemined data type:
+- I dunno, lol.
+
+
+* Auxiliary functions:
+
+- A function that runs everytime the app starts, automatically syncing with the org file
+- Functions to change timer attributes (Add amount of time, etc.)
+- Function to change number of breaks
+- Function to start blocking apps and websites when a timer starts
+- Function that parses TODO items from todos.org
+- Add more functions
+
+

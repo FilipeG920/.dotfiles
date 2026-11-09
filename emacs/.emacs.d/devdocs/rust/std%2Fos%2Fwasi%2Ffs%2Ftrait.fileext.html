@@ -1,0 +1,81 @@
+<h1 class="main-heading">Trait FileExt </h1>
+<pre class="rust item-decl" data-language="rust">pub trait FileExt {
+    // Required methods
+    fn read_at(&amp;self, buf: &amp;mut [u8], offset: u64) -&gt; Result&lt;usize&gt;;
+    fn read_vectored_at(
+        &amp;self,
+        bufs: &amp;mut [IoSliceMut&lt;'_&gt;],
+        offset: u64,
+    ) -&gt; Result&lt;usize&gt;;
+    fn read_buf_at(
+        &amp;self,
+        buf: BorrowedCursor&lt;'_, u8&gt;,
+        offset: u64,
+    ) -&gt; Result&lt;()&gt;;
+    fn write_at(&amp;self, buf: &amp;[u8], offset: u64) -&gt; Result&lt;usize&gt;;
+    fn write_vectored_at(
+        &amp;self,
+        bufs: &amp;[IoSlice&lt;'_&gt;],
+        offset: u64,
+    ) -&gt; Result&lt;usize&gt;;
+
+    // Provided methods
+    fn read_exact_at(&amp;self, buf: &amp;mut [u8], offset: u64) -&gt; Result&lt;()&gt; { ... }
+    fn write_all_at(&amp;self, buf: &amp;[u8], offset: u64) -&gt; Result&lt;()&gt; { ... }
+}</pre>
+<span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div>
+<div class="stab portability">Available on <strong>WASI</strong> only.</div></span><p>WASI-specific extensions to <a href="../../../fs/struct.file" title="struct std::fs::File"><code>File</code></a>.</p> <h3 id="required-methods" class="section-header">Required Methods</h3>
+<div class="methods">
+<summary><section id="tymethod.read_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#35">Source</a><pre class="code-header" data-language="rust">fn read_at(&amp;self, buf: &amp;mut [u8], offset: u64) -&gt; Result&lt;usize&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Reads a number of bytes starting from a given offset.</p> <p>Returns the number of bytes read.</p> <p>The offset is relative to the start of the file and thus independent from the current cursor.</p> <p>The current file cursor is not affected by this function.</p> <p>Note that similar to <a href="../../../fs/struct.file#method.read" title="method std::fs::File::read"><code>File::read</code></a>, it is not an error to return with a short read.</p> </div>
+<summary><section id="tymethod.read_vectored_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#48">Source</a><pre class="code-header" data-language="rust">fn read_vectored_at(
+    &amp;self,
+    bufs: &amp;mut [IoSliceMut&lt;'_&gt;],
+    offset: u64,
+) -&gt; Result&lt;usize&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Reads a number of bytes starting from a given offset.</p> <p>Returns the number of bytes read.</p> <p>The offset is relative to the start of the file and thus independent from the current cursor.</p> <p>The current file cursor is not affected by this function.</p> <p>Note that similar to <a href="../../../fs/struct.file#method.read_vectored" title="method std::fs::File::read_vectored"><code>File::read_vectored</code></a>, it is not an error to return with a short read.</p> </div>
+<summary><section id="tymethod.read_buf_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#55">Source</a><pre class="code-header" data-language="rust">fn read_buf_at(&amp;self, buf: BorrowedCursor&lt;'_, u8&gt;, offset: u64) -&gt; Result&lt;()&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Reads some bytes starting from a given offset into the buffer.</p> <p>This equivalent to the <a href="trait.fileext#tymethod.read_at" title="method std::os::wasi::fs::FileExt::read_at"><code>read_at</code></a> method, except that it is passed a <a href="../../../io/struct.borrowedcursor" title="struct std::io::BorrowedCursor"><code>BorrowedCursor</code></a> rather than <code>&amp;mut [u8]</code> to allow use with uninitialized buffers. The new data will be appended to any existing contents of <code>buf</code>.</p> </div>
+<summary><section id="tymethod.write_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#114">Source</a><pre class="code-header" data-language="rust">fn write_at(&amp;self, buf: &amp;[u8], offset: u64) -&gt; Result&lt;usize&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Writes a number of bytes starting from a given offset.</p> <p>Returns the number of bytes written.</p> <p>The offset is relative to the start of the file and thus independent from the current cursor.</p> <p>The current file cursor is not affected by this function.</p> <p>When writing beyond the end of the file, the file is appropriately extended and the intermediate bytes are initialized with the value 0.</p> <p>Note that similar to <a href="../../../fs/struct.file#method.write" title="method std::fs::File::write"><code>File::write</code></a>, it is not an error to return a short write.</p> </div>
+<summary><section id="tymethod.write_vectored_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#130">Source</a><pre class="code-header" data-language="rust">fn write_vectored_at(&amp;self, bufs: &amp;[IoSlice&lt;'_&gt;], offset: u64) -&gt; Result&lt;usize&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Writes a number of bytes starting from a given offset.</p> <p>Returns the number of bytes written.</p> <p>The offset is relative to the start of the file and thus independent from the current cursor.</p> <p>The current file cursor is not affected by this function.</p> <p>When writing beyond the end of the file, the file is appropriately extended and the intermediate bytes are initialized with the value 0.</p> <p>Note that similar to <a href="../../../fs/struct.file#method.write_vectored" title="method std::fs::File::write_vectored"><code>File::write_vectored</code></a>, it is not an error to return a short write.</p> </div>
+</div>
+<h3 id="provided-methods" class="section-header">Provided Methods</h3>
+<div class="methods">
+<summary><section id="method.read_exact_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#84-98">Source</a><pre class="code-header" data-language="rust">fn read_exact_at(&amp;self, buf: &amp;mut [u8], offset: u64) -&gt; Result&lt;()&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Reads the exact number of byte required to fill <code>buf</code> from the given offset.</p> <p>The offset is relative to the start of the file and thus independent from the current cursor.</p> <p>The current file cursor is not affected by this function.</p> <p>Similar to <a href="../../../io/trait.read#method.read_exact" title="method std::io::Read::read_exact"><code>Read::read_exact</code></a> but uses <a href="trait.fileext#tymethod.read_at" title="method std::os::wasi::fs::FileExt::read_at"><code>read_at</code></a> instead of <code>read</code>.</p> <h5 id="errors">Errors</h5> <p>If this function encounters an error of the kind <a href="../../../io/enum.errorkind#variant.Interrupted" title="variant std::io::ErrorKind::Interrupted"><code>io::ErrorKind::Interrupted</code></a> then the error is ignored and the operation will continue.</p> <p>If this function encounters an “end of file” before completely filling the buffer, it returns an error of the kind <a href="../../../io/enum.errorkind#variant.UnexpectedEof" title="variant std::io::ErrorKind::UnexpectedEof"><code>io::ErrorKind::UnexpectedEof</code></a>. The contents of <code>buf</code> are unspecified in this case.</p> <p>If any other read error is encountered then this function immediately returns. The contents of <code>buf</code> are unspecified in this case.</p> <p>If this function returns an error, it is unspecified how many bytes it has read, but it will never read more than would be necessary to completely fill the buffer.</p> </div>
+<summary><section id="method.write_all_at" class="method"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#152-167">Source</a><pre class="code-header" data-language="rust">fn write_all_at(&amp;self, buf: &amp;[u8], offset: u64) -&gt; Result&lt;()&gt;</pre></section><span class="item-info"><div class="stab unstable">
+<span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>wasi_ext</code> <a href="https://github.com/rust-lang/rust/issues/71213">#71213</a>)</span>
+</div></span></summary><div class="docblock">
+<p>Attempts to write an entire buffer starting from a given offset.</p> <p>The offset is relative to the start of the file and thus independent from the current cursor.</p> <p>The current file cursor is not affected by this function.</p> <p>This method will continuously call <a href="trait.fileext#tymethod.write_at" title="method std::os::wasi::fs::FileExt::write_at"><code>write_at</code></a> until there is no more data to be written or an error of non-<a href="../../../io/enum.errorkind#variant.Interrupted" title="variant std::io::ErrorKind::Interrupted"><code>io::ErrorKind::Interrupted</code></a> kind is returned. This method will not return until the entire buffer has been successfully written or such an error occurs. The first error that is not of <a href="../../../io/enum.errorkind#variant.Interrupted" title="variant std::io::ErrorKind::Interrupted"><code>io::ErrorKind::Interrupted</code></a> kind generated from this method will be returned.</p> <h5 id="errors-1">Errors</h5> <p>This function will return the first error of non-<a href="../../../io/enum.errorkind#variant.Interrupted" title="variant std::io::ErrorKind::Interrupted"><code>io::ErrorKind::Interrupted</code></a> kind that <a href="trait.fileext#tymethod.write_at" title="method std::os::wasi::fs::FileExt::write_at"><code>write_at</code></a> returns.</p> </div>
+</div>
+<h3 id="dyn-compatibility" class="section-header">Dyn Compatibility</h3>
+<div class="dyn-compatibility-info">
+<p>This trait <b>is</b> <a href="https://doc.rust-lang.org/1.98.0/reference/items/traits.html#dyn-compatibility">dyn compatible</a>.</p>
+<p><i>In older versions of Rust, dyn compatibility was called "object safety".</i></p>
+</div>
+<h3 id="implementors" class="section-header">Implementors</h3>
+<div id="implementors-list">
+
+<section id="impl-FileExt-for-File" class="impl"><a class="src rightside" href="https://doc.rust-lang.org/src/std/os/wasi/fs.rs.html#226-310">Source</a><pre class="code-header" data-language="rust">impl FileExt for File</pre></section>
+</div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2010 The Rust Project Developers<br>Licensed under the Apache License, Version 2.0 or the MIT license, at your option.<br>
+    <a href="https://doc.rust-lang.org/std/os/wasi/fs/trait.FileExt.html" class="_attribution-link">https://doc.rust-lang.org/std/os/wasi/fs/trait.FileExt.html</a>
+  </p>
+</div>

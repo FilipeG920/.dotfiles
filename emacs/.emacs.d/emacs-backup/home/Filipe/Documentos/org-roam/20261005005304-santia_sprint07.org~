@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       0a6f9f74-6eaa-4560-9f6d-32e592a748bd
+:END:
+#+title: [SANTIA] - Sprint07
+
+* Important
+A reunion hasn't been made yet in order to decide what the actual tasks need to be.
+So for now this will contain mostly things that I think would be the next best things
+that should be tackled on this sprint.
+
+** The tasks themselves:
+
+- Better filtering system for the professional user -> Medium Priority (#B)
+  + There should be more criteria for filtering (Location, Salary, Hours of work, Period of Work)
+  + This is something that depends on the backend for the actual implementation but I think I can get the mockups in the UI already and just wait for the backend to then do the logic implementation.
+    
+- Improve notification system for both professional and staff user -> Medium Priority (#B)
+  + The staff user should be able to send notifications/e-mail about missing documentation
+  + The professional user should be able to see the notification inside the platform (in-app notifications)
+    1. Do mockups of the notification bell and notification cards.
+    2. Create a notification center page that could be accessed via the dropdown disponibilized when clicking on the notification icon.
+    
+- Improve the overall UI of the application. -> Low Priority (#C)
+  + Change some AI-generated icons that don't match with the objectives/mission of the company
+  + Add some volume/diversity to some components of the application in some pages.
+    
+- Separate the Admin screens from the Staff screens -> High Priority (#A)
+  + As they are right now it is confusing and our dev team would benefit greatly from a UI for testing.
+  + I need to analyze the codebase and see how the current Staff user workflow and screens are implemented.
+  + Those admin screens and workflow should be simple and don't need to follow the current UI design, since it's something only the Dev team should be able to see.
+  + I'll unfortunately ask AI in order to better plan how this thing should be implemented but I'll first do this myself and document it, only then I'll use AI on what I see fit.
+
+- Analyze how the recruitment phase should be improved -> Low Priority (#C)
+
+- Plan how the Staff user should manage a partner's recruitees and its contracts.
+  + Creation of contracts (Partner/Professional)
+  + Signing of contracts
+  + List contracts
