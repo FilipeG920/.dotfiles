@@ -1,0 +1,42 @@
+[bar.default]
+shadow = false
+contact_shadow = false
+
+[dock]
+shadow = false
+
+[shell.panel]
+shadow = false
+
+[theme]
+mode              = "auto"        # dark | light | auto
+source            = "wallpaper"     # builtin | wallpaper | community | custom
+builtin           = "Noctalia"    # bundled palette name
+community_palette = "Oxocarbon"   # community palette name when source = "community"
+custom_palette    = "MyPalette"   # file name (without .json) when source = "custom"
+wallpaper_scheme  = "vibrant"     # generator used when source = "wallpaper"
+pure_black_dark   = false         # replace dark-mode backgrounds with pure black
+
+[wallpaper]
+enabled = false
+
+[widget.workspaces]
+hide_when_empty = true
+
+[idle]
+behaviour_order = ["lock", "screen-off", "suspend"]
+pre_action_fade_seconds = 2.0
+
+[idle.behaviour.lock]
+timeout = 600
+action = "lock"
+enabled = true
+
+[idle.behaviour.screen-off]
+timeout = 660
+action = "screen-off"
+enabled = true
+
+[idle.behaviour.suspend]
+timeout = 900
+action = "lock_and_suspend"
